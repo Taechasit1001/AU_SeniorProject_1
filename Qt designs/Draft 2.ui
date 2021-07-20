@@ -38,6 +38,12 @@
      <property name="text">
       <string>Piano</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_source1_2">
      <property name="geometry">
@@ -50,6 +56,9 @@
      </property>
      <property name="text">
       <string>Electric Piano</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_source1_3">
@@ -64,6 +73,9 @@
      <property name="text">
       <string>Organ</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_source1_4">
      <property name="geometry">
@@ -76,6 +88,9 @@
      </property>
      <property name="text">
       <string>Orchestral</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_source1_5">
@@ -90,6 +105,9 @@
      <property name="text">
       <string>Other</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_source1_Single">
      <property name="geometry">
@@ -102,6 +120,12 @@
      </property>
      <property name="text">
       <string>Single</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_source1_Multiple">
@@ -142,6 +166,9 @@
      <property name="text">
       <string>Piano</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_source2_2">
      <property name="geometry">
@@ -154,6 +181,9 @@
      </property>
      <property name="text">
       <string>Electric Piano</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_source2_3">
@@ -168,6 +198,9 @@
      <property name="text">
       <string>Organ</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_source2_4">
      <property name="geometry">
@@ -180,6 +213,9 @@
      </property>
      <property name="text">
       <string>Orchestral</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_source2_5">
@@ -194,6 +230,9 @@
      <property name="text">
       <string>Other</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_source2_Single">
      <property name="geometry">
@@ -206,6 +245,12 @@
      </property>
      <property name="text">
       <string>Single</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_source2_Multiple">
