@@ -605,7 +605,7 @@
      <property name="title">
       <string>Tempo</string>
      </property>
-     <widget class="QSlider" name="Slider_masterVolume_2">
+     <widget class="QSlider" name="Slider_tempo">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -624,7 +624,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="Button_tempo_p15">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -637,7 +637,7 @@
        <string>× 1.5</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="Button_tempo_p20">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -650,7 +650,7 @@
        <string>× 2</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="Button_tempo_m20">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -663,7 +663,7 @@
        <string>÷ 2</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="Button_tempo_m15">
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -676,7 +676,7 @@
        <string>÷ 1.5</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_2">
+     <widget class="QTextEdit" name="Edit_tempo">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -712,7 +712,7 @@ p, li { white-space: pre-wrap; }
       <string>Intro</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_3">
+    <widget class="QTextEdit" name="Edit_intro">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -729,7 +729,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="Browse_intro">
      <property name="geometry">
       <rect>
        <x>390</x>
@@ -760,7 +760,7 @@ p, li { white-space: pre-wrap; }
       <string>Pattern</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_4">
+    <widget class="QTextEdit" name="Edit_pattern">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -777,7 +777,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_6">
+    <widget class="QPushButton" name="Browse_pattern">
      <property name="geometry">
       <rect>
        <x>390</x>
@@ -808,7 +808,7 @@ p, li { white-space: pre-wrap; }
       <string>Outro</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_5">
+    <widget class="QTextEdit" name="Edit_outro">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -825,7 +825,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_7">
+    <widget class="QPushButton" name="Browse_outro">
      <property name="geometry">
       <rect>
        <x>390</x>
@@ -838,7 +838,7 @@ p, li { white-space: pre-wrap; }
       <string>Browse</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="Button_source2_6">
+    <widget class="QPushButton" name="Button_play">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -859,7 +859,7 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="Button_source2_7">
+    <widget class="QPushButton" name="Button_pause">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -880,7 +880,7 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="Button_source2_8">
+    <widget class="QPushButton" name="Button_stop">
      <property name="geometry">
       <rect>
        <x>260</x>
@@ -901,7 +901,7 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="Button_source2_9">
+    <widget class="QPushButton" name="Button_outro">
      <property name="geometry">
       <rect>
        <x>370</x>
