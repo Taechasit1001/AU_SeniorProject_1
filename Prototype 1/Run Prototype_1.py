@@ -24,6 +24,12 @@ class Ui(QtWidgets.QMainWindow):
         print(mido.get_output_names())
         initRhythmSection(outPort, inPort)
 
+        self.Slider_1_1.valueChanged.connect(lambda : onLevelChanged(self))
+        self.Slider_1_2.valueChanged.connect(lambda : onLevelChanged(self))
+        self.Slider_1_3.valueChanged.connect(lambda : onLevelChanged(self))
+        self.Slider_1_4.valueChanged.connect(lambda : onLevelChanged(self))
+        self.Slider_1_5.valueChanged.connect(lambda : onLevelChanged(self))
+        
 
         self.Slider_tempo.valueChanged.connect(lambda : onDialChanged(self))
         self.Button_play.clicked.connect(lambda : onPlayClicked(self))
@@ -33,6 +39,7 @@ class Ui(QtWidgets.QMainWindow):
         self.Button_pause.clicked.connect(lambda : onPauseClicked(self))
 
         self.show()
+        inPort[0].callback = inHandlerLevel1
 
     def closeEvent(self, event):
         closePorts()
@@ -96,9 +103,23 @@ def inHandlerLevel1(message):
     global Volume1
 
     m = mido.Message.from_bytes(message.bytes())
-    for i in range(Volume1):
-        m.channel = i + 2                   #Start at channel 2
+    for i in range(len(Volume1)):
+        m.channel = i + 1                   #Start at channel 2
+        outPort[1].send(m)
 
+def onLevelChanged(mainWin):
+    msg = mido.Message.from_bytes([0xB0, 0x07, 0x00])       #Controller volume message
+
+    Volume1[0] = mainWin.Slider_1_1.value()
+    Volume1[1] = mainWin.Slider_1_2.value()
+    Volume1[2] = mainWin.Slider_1_3.value()
+    Volume1[3] = mainWin.Slider_1_4.value()
+    Volume1[4] = mainWin.Slider_1_5.value()
+    print(Volume1)
+    for i in range(len(Volume1)):
+        msg.value = Volume1[i]
+        msg.channel = i + 1
+        outPort[1].send(msg)
 
 
 

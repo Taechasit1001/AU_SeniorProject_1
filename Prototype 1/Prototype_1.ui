@@ -35,6 +35,9 @@
        <height>160</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>127</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -153,6 +156,9 @@
        <height>160</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>127</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -165,6 +171,9 @@
        <width>22</width>
        <height>160</height>
       </rect>
+     </property>
+     <property name="maximum">
+      <number>127</number>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -179,6 +188,9 @@
        <height>160</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>127</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -191,6 +203,9 @@
        <width>22</width>
        <height>160</height>
       </rect>
+     </property>
+     <property name="maximum">
+      <number>127</number>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -777,6 +792,9 @@ p, li { white-space: pre-wrap; }
        <height>160</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>127</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -895,6 +913,9 @@ p, li { white-space: pre-wrap; }
        <height>160</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>127</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -907,6 +928,9 @@ p, li { white-space: pre-wrap; }
        <width>22</width>
        <height>160</height>
       </rect>
+     </property>
+     <property name="maximum">
+      <number>127</number>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -921,6 +945,9 @@ p, li { white-space: pre-wrap; }
        <height>160</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>127</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -933,6 +960,9 @@ p, li { white-space: pre-wrap; }
        <width>22</width>
        <height>160</height>
       </rect>
+     </property>
+     <property name="maximum">
+      <number>127</number>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
