@@ -298,7 +298,7 @@
      <rect>
       <x>10</x>
       <y>690</y>
-      <width>731</width>
+      <width>651</width>
       <height>111</height>
      </rect>
     </property>
@@ -373,7 +373,7 @@
     <widget class="QPushButton" name="Button_preset_Save">
      <property name="geometry">
       <rect>
-       <x>620</x>
+       <x>560</x>
        <y>20</y>
        <width>81</width>
        <height>81</height>
@@ -1104,7 +1104,21 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </widget>
+   <widget class="QPushButton" name="Button_setting">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>710</y>
+      <width>75</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Setting</string>
+    </property>
+   </widget>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -1115,7 +1129,6 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
