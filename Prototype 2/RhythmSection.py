@@ -5,7 +5,7 @@ import time
 # global variables
 
 DRUMPORT = 0  # Loop MIDI Port 3 or IAC Driver Bus 3
-tempo = 288   # but is actually 120
+tempo = 240   # but is actually 100
 ticks_per_beat = 480
 sec_per_beat = 60/tempo
 sec_per_tick = sec_per_beat/ticks_per_beat
@@ -19,13 +19,13 @@ baseEvents = []
 introEvents = []
 Events = None
 fillInEvents = []
-resolution = 15   # number of ticks for each 1/32nd
+resolution = 60   # number of ticks for each 1/32nd
 stopped = True
 paused = False
 rhythmOff = False
 
-outPort = []
-inPort = []
+outPort = None
+inPort = None
 window = None
 
 def initRhythmSection(mainOutPorts, mainInPorts):
@@ -42,9 +42,9 @@ def onDialChanged(mainWin):
     mainWin.Edit_tempo.setText(str(tempo))
 
     tempo *= 2.4    # timing adjustment
-    sec_per_beat = 60/tempo
+    sec_per_beat = 60.0/tempo
     sec_per_tick = sec_per_beat/ticks_per_beat
-    print(sec_per_tick, ": one beat in", sec_per_tick*480, "second")
+    print(sec_per_tick, ": one beat in", sec_per_tick*480.0, "second")
 
 
 def playEventList(interval):
@@ -66,8 +66,8 @@ def playEventList(interval):
             if thisEventList != []:
                 for msg in thisEventList:
                     if msg.time == 0:
-                        outPort[DRUMPORT].send(msg)
-                    else: threading.Timer(msg.time*sec_per_tick, outPort[DRUMPORT].send, [msg]).start()
+                        outPort.send(msg)
+                    else: threading.Timer(msg.time*sec_per_tick, outPort.send, [msg]).start()
         else:
             startInterval = interval+1
 
@@ -130,8 +130,11 @@ def loadMidiFile(midiFile):
                 midiEvents.append(tickList)
                 tickList = []
                 curInterval += 1
+    midiEvents.append(tickList)
+    curInterval += 1
+    
     # fill up the last bar (assuming that the loop doesn't end on first beat
-    while curInterval%128 != 0:
+    while curInterval%32 != 0:
         midiEvents.append([])
         curInterval += 1
 
@@ -150,9 +153,9 @@ def onPlayClicked(mainWin):
 
     if not (rhythmOff or paused):
         if stopped:
-            baseName = mainWin.Edit_pattern.toPlainText().strip()
+            baseName = mainWin.Edit_base.toPlainText().strip()
             introName = mainWin.Edit_intro.toPlainText().strip()
-            fillInName = mainWin.Edit_outro.toPlainText().strip()
+            fillInName = mainWin.Edit_fillin.toPlainText().strip()
             print(baseName)
             print(introName)
             print(fillInName)

@@ -38,13 +38,13 @@ class Ui(QtWidgets.QMainWindow):
         print()
         print("Output :", mido.get_output_names())
 
-
-        initRhythmSection(level1OutPort, level1InPort)
         
 
         #Configuration
         detectPorts()
         openPortsNew()
+        initRhythmSection(level1OutPort, level1InPort)
+        onLevelChanged(self)
 
 
 
