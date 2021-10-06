@@ -26,6 +26,11 @@ level2OutPort = None
 level2IndexIn = 1
 level2IndexOut = 4
 
+masterVolume = 100
+balanceVolume = 50
+source1VolumeModifier = 1.0
+source2VolumeModifier = 1.0
+
 from RhythmSection import *
 
 class Ui(QtWidgets.QMainWindow):
@@ -60,6 +65,15 @@ class Ui(QtWidgets.QMainWindow):
         self.Slider_2_3.valueChanged.connect(lambda : onLevelChanged(self))
         self.Slider_2_4.valueChanged.connect(lambda : onLevelChanged(self))
         self.Slider_2_5.valueChanged.connect(lambda : onLevelChanged(self))
+
+        self.Slider_balance.valueChanged.connect(lambda : onVolumeChanged(self))
+        self.Dial_volume.valueChanged.connect(lambda : onVolumeChanged(self))
+        self.Button_volume_max.clicked.connect(lambda: volumeMax(self))
+        self.Button_volume_mute.clicked.connect(lambda: volumeMute(self))
+        self.Button_balance_both.clicked.connect(lambda: balanceBoth(self))
+        self.Button_balance_first.clicked.connect(lambda: balanceFirst(self))
+        self.Button_balance_second.clicked.connect(lambda: balanceSecond(self))
+
         self.Button_setting.clicked.connect(self.onOpenIO)
 
         
@@ -75,8 +89,8 @@ class Ui(QtWidgets.QMainWindow):
         self.show()
         
 
-    #def closeEvent(self, event):
-    #    closePorts()
+    def closeEvent(self, event):
+         closePortsNew()
 
     def onOpenIO(self):
         self.ioWindow = ioUI()
@@ -130,11 +144,13 @@ def openPortsNew():
         level1InPort.callback = None
         level1InPort.close()
         level1OutPort.close()
+
        
     if level2InPort != None:
         level2InPort.callback = None
         level2InPort.close()
         level2OutPort.close()
+
         
 
     level1InPort = mido.open_input(inPortNameFull[level1IndexIn])
@@ -183,6 +199,19 @@ def closePorts():
 
     print("Port closed")
 
+def closePortsNew():
+    if level1InPort != None:
+        level1InPort.callback = None
+        level1InPort.close()
+        level1OutPort.close()
+        print("Level 1 Ports closed")
+       
+    if level2InPort != None:
+        level2InPort.callback = None
+        level2InPort.close()
+        level2OutPort.close()
+        print("Level 2 Ports closed")
+
 def inHandlerTP(message):
     global outPort
 
@@ -218,22 +247,23 @@ def onLevelChanged(mainWin):
     Volume1[2] = mainWin.Slider_1_3.value()
     Volume1[3] = mainWin.Slider_1_4.value()
     Volume1[4] = mainWin.Slider_1_5.value()
-    print("Volume 1: ", Volume1)
+    #print("Volume 1: ", Volume1)
 
     Volume2[0] = mainWin.Slider_2_1.value()
     Volume2[1] = mainWin.Slider_2_2.value()
     Volume2[2] = mainWin.Slider_2_3.value()
     Volume2[3] = mainWin.Slider_2_4.value()
     Volume2[4] = mainWin.Slider_2_5.value()
-    print("Volume 2: ", Volume2)
+    #print("Volume 2: ", Volume2)
     
     for i in range(len(Volume1)):
-        msg.value = Volume1[i]
+
+        msg.value = int(Volume1[i] * source1VolumeModifier)
         msg.channel = i + 1
         level1OutPort.send(msg)
 
     for i in range(len(Volume2)):
-        msg.value = Volume2[i]
+        msg.value = int(Volume2[i] * source2VolumeModifier)
         msg.channel = i + 1
         level2OutPort.send(msg)
 
@@ -250,6 +280,63 @@ def onIndexChanged(mainWin):
     print("Current index is " + str(level1IndexOut))
 
     openPortsNew()
+
+def onVolumeChanged(mainWin):
+    global masterVolume
+    global balanceVolume
+    global source1VolumeModifier
+    global source2VolumeModifier
+
+    masterVolume = mainWin.Dial_volume.value()
+    balanceVolume = mainWin.Slider_balance.value()
+
+    if balanceVolume == 50:
+        source1VolumeModifier = masterVolume/100
+        source2VolumeModifier = masterVolume/100
+    elif balanceVolume < 50:
+        source1VolumeModifier = masterVolume/100
+        source2VolumeModifier = ((balanceVolume)/50) * masterVolume/100
+    elif balanceVolume > 50:
+        source1VolumeModifier = (abs(balanceVolume-100)/50) * masterVolume/100
+        source2VolumeModifier = masterVolume/100
+
+    onLevelChanged(mainWin)
+    
+    #Debug
+    # print("Master: " + str(masterVolume))
+    # print("Balance: " + str(balanceVolume))
+    # print("Source 1: " + str(source1VolumeModifier))
+    # print("Source 2: " + str(source2VolumeModifier))
+
+def volumeMax(mainWin):
+    global masterVolume
+    masterVolume = 100
+    mainWin.Dial_volume.setValue(100)
+    onVolumeChanged(mainWin)
+
+def volumeMute(mainWin):
+    global masterVolume
+    masterVolume = 0
+    mainWin.Dial_volume.setValue(0)
+    onVolumeChanged(mainWin)
+
+def balanceBoth(mainWin):
+    global balanceVolume
+    balanceVolume = 50
+    mainWin.Slider_balance.setValue(50)
+    onVolumeChanged(mainWin)
+
+def balanceFirst(mainWin):
+    global balanceVolume
+    balanceVolume = 0
+    mainWin.Slider_balance.setValue(0)
+    onVolumeChanged(mainWin)
+
+def balanceSecond(mainWin):
+    global balanceVolume
+    balanceVolume = 100
+    mainWin.Slider_balance.setValue(100)
+    onVolumeChanged(mainWin)
 
 
 
