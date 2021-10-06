@@ -30,6 +30,7 @@ masterVolume = 100
 balanceVolume = 50
 source1VolumeModifier = 1.0
 source2VolumeModifier = 1.0
+Transpose = 0
 
 from RhythmSection import *
 
@@ -73,6 +74,10 @@ class Ui(QtWidgets.QMainWindow):
         self.Button_balance_both.clicked.connect(lambda: balanceBoth(self))
         self.Button_balance_first.clicked.connect(lambda: balanceFirst(self))
         self.Button_balance_second.clicked.connect(lambda: balanceSecond(self))
+
+        self.Button_transpose_Reset.clicked.connect(lambda: transposeReset(self))
+        self.Button_transpose_Plus.clicked.connect(lambda: transposeIncrease(self))
+        self.Button_transpose_Minus.clicked.connect(lambda: transposeDecrease(self))
 
         self.Button_setting.clicked.connect(self.onOpenIO)
 
@@ -144,13 +149,11 @@ def openPortsNew():
         level1InPort.callback = None
         level1InPort.close()
         level1OutPort.close()
-
        
     if level2InPort != None:
         level2InPort.callback = None
         level2InPort.close()
         level2OutPort.close()
-
         
 
     level1InPort = mido.open_input(inPortNameFull[level1IndexIn])
@@ -228,6 +231,7 @@ def inHandlerLevel1(message):
     m = mido.Message.from_bytes(message.bytes())
     for i in range(len(Volume1)):
         m.channel = i + 1                   #Start at channel 2
+        m.note += Transpose
         level1OutPort.send(m)
 
 def inHandlerLevel2(message):
@@ -237,6 +241,7 @@ def inHandlerLevel2(message):
     m = mido.Message.from_bytes(message.bytes())
     for i in range(len(Volume2)):
         m.channel = i + 1                   #Start at channel 2
+        m.note += Transpose
         level2OutPort.send(m)
 
 def onLevelChanged(mainWin):
@@ -338,7 +343,22 @@ def balanceSecond(mainWin):
     mainWin.Slider_balance.setValue(100)
     onVolumeChanged(mainWin)
 
+def transposeIncrease(mainWin):
+    global Transpose
+    if Transpose < 11:
+        Transpose += 1
+    mainWin.lcdNumber_transpose.display(Transpose)
 
+def transposeDecrease(mainWin):
+    global Transpose
+    if Transpose > -11:
+        Transpose -= 1
+    mainWin.lcdNumber_transpose.display(Transpose)
+
+def transposeReset(mainWin):
+    global Transpose
+    Transpose = 0
+    mainWin.lcdNumber_transpose.display(Transpose)
 
 
 

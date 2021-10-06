@@ -385,9 +385,9 @@ p, li { white-space: pre-wrap; }
     <widget class="QLCDNumber" name="lcdNumber_transpose">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>90</x>
        <y>20</y>
-       <width>101</width>
+       <width>111</width>
        <height>111</height>
       </rect>
      </property>
@@ -402,7 +402,7 @@ p, li { white-space: pre-wrap; }
       <bool>false</bool>
      </property>
      <property name="digitCount">
-      <number>2</number>
+      <number>3</number>
      </property>
      <property name="segmentStyle">
       <enum>QLCDNumber::Filled</enum>
