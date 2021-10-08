@@ -831,7 +831,7 @@ p, li { white-space: pre-wrap; }
       <string>Pause</string>
      </property>
      <property name="checkable">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_stop">

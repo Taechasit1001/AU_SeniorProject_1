@@ -95,7 +95,7 @@ def onStopClicked(mainWin):
 def onRhythmOffToggled(mainWin):
     global rhythmOff, stopped, paused, startInterval
     
-    if mainWin.Button_stop.isChecked():
+    if mainWin.Button_rhythmOff.isChecked():
         rhythmOff = True
         onStopClicked(mainWin)
     else:
