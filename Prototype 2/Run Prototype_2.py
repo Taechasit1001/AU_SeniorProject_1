@@ -27,6 +27,7 @@ balanceVolume = 50
 source1VolumeModifier = 1.0
 source2VolumeModifier = 1.0
 Transpose = 0
+tempoValue = 100
 
 from RhythmSection import *
 
@@ -72,6 +73,11 @@ class Ui(QtWidgets.QMainWindow):
         self.Button_transpose_Reset.clicked.connect(lambda: transposeReset(self))
         self.Button_transpose_Plus.clicked.connect(lambda: transposeIncrease(self))
         self.Button_transpose_Minus.clicked.connect(lambda: transposeDecrease(self))
+
+        self.Button_tempo_p15.clicked.connect(lambda: tempoIn1(self))
+        self.Button_tempo_p20.clicked.connect(lambda: tempoIn2(self))
+        self.Button_tempo_m15.clicked.connect(lambda: tempoDe1(self))
+        self.Button_tempo_m20.clicked.connect(lambda: tempoDe2(self))
 
         self.Button_setting.clicked.connect(self.onOpenIO)
 
@@ -306,6 +312,43 @@ def transposeReset(mainWin):
     global Transpose
     Transpose = 0
     mainWin.lcdNumber_transpose.display(Transpose)
+
+def tempoIn1(mainWin):
+    global tempoValue
+    if mainWin.Slider_tempo.value()*1.5 <= 200:
+        tempoValue = mainWin.Slider_tempo.value()*1.5
+        mainWin.Slider_tempo.setValue(mainWin.Slider_tempo.value()*1.5)
+    elif mainWin.Slider_tempo.value()*1.5 > 200:
+        tempoValue = 200
+        mainWin.Slider_tempo.setValue(200)
+
+def tempoIn2(mainWin):
+    global tempoValue
+    if mainWin.Slider_tempo.value()*2 <= 200:
+        tempoValue = mainWin.Slider_tempo.value()*2
+        mainWin.Slider_tempo.setValue(mainWin.Slider_tempo.value()*2)
+    elif mainWin.Slider_tempo.value()*2 > 200:
+        tempoValue = 200
+        mainWin.Slider_tempo.setValue(200)
+
+def tempoDe1(mainWin):
+    global tempoValue
+    if mainWin.Slider_tempo.value()/1.5 >= 1:
+        tempoValue = mainWin.Slider_tempo.value()/1.5
+        mainWin.Slider_tempo.setValue(mainWin.Slider_tempo.value()/1.5)
+    elif mainWin.Slider_tempo.value()/1.5 < 1:
+        tempoValue = 1
+        mainWin.Slider_tempo.setValue(1)
+
+def tempoDe2(mainWin):
+    global tempoValue
+    if mainWin.Slider_tempo.value()/2 >= 1:
+        tempoValue = mainWin.Slider_tempo.value()/2
+        mainWin.Slider_tempo.setValue(mainWin.Slider_tempo.value()/2)
+    elif mainWin.Slider_tempo.value()/2 < 1:
+        tempoValue = 1
+        mainWin.Slider_tempo.setValue(1)
+    
 
 
 
