@@ -40,7 +40,7 @@ class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
         
-        uic.loadUi('Prototype 2/Prototype_2.ui', self)
+        uic.loadUi('mainWindow.ui', self)
 
         print("Input :", mido.get_input_names())
         print("Output :", mido.get_output_names())
@@ -123,7 +123,7 @@ class Ui(QtWidgets.QMainWindow):
 class ioUI(QtWidgets.QMainWindow, QtWidgets.QPushButton):
     def __init__(self):
         super(ioUI,self).__init__()
-        uic.loadUi('Prototype 2/Prototype_2_io.ui', self)
+        uic.loadUi('settingWindow.ui', self)
 
         self.comboBox_Source1_i.addItems(inPortNameFull)
         self.comboBox_Source1_i.setCurrentIndex(level1IndexIn)
@@ -270,6 +270,7 @@ def onIndexChanged(mainWin):
     level1IndexOut = mainWin.comboBox_Source1_o.currentIndex()
     level2IndexIn = mainWin.comboBox_Source2_i.currentIndex()
     level2IndexOut = mainWin.comboBox_Source2_o.currentIndex()
+    print("Current index is " + str(level1IndexOut))
 
     openPortsNew()
 
