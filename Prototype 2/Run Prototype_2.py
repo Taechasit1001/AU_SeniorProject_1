@@ -1,10 +1,6 @@
 from PyQt5 import QtWidgets, uic
 import sys
 import mido
-import time
-import asyncio
-from threading import Thread
-import rtmidi
 
 # global variables
 outPort = []
@@ -41,10 +37,8 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('Prototype 2/Prototype_2.ui', self)
 
         print("Input :", mido.get_input_names())
-        print()
         print("Output :", mido.get_output_names())
 
-        
 
         #Configuration
         detectPorts()
@@ -164,44 +158,6 @@ def openPortsNew():
     level1InPort.callback = inHandlerLevel1
     level2InPort.callback = inHandlerLevel2
 
-
-def openPorts():
-    global outPort, inPort
-
-    inputPorts = mido.get_input_names()
-    outputPorts = mido.get_output_names()
-    
-    i = 0
-    #for i in range(len(inputPorts)):
-    #    inPort.append(mido.open_input(inputPorts[1]))
-    #     if inputPorts[i][:4] == "Micr":
-    #         inPort.append(mido.open_input(inputPorts[i]))
-    # for j in range(len(inPort)):
-    #    inPort[j].callback = inHandler
-    for j in [0,1]:
-        inPort.append(mido.open_input(inputPorts[j]))
-        inPortName.append(inputPorts[j])
-    print("input ports opened", len(inPort))
-
-
-    i = 0
-    for j in [0,3,4]:
-        outPort.append(mido.open_output(outputPorts[j]))
-        outPortName.append(outputPorts[j])
-    print("Output ports opened", len(outPort))
-    
-def closePorts():
-    global outPort, inPort
-    
-    while outPort != []:
-        outPort[len(outPort)-1].close()
-        del outPort[len(outPort)-1]
-    while inPort != []:
-        inPort[len(inPort)-1].close()
-        del inPort[len(inPort)-1]
-
-    print("Port closed")
-
 def closePortsNew():
     if level1InPort != None:
         level1InPort.callback = None
@@ -214,15 +170,6 @@ def closePortsNew():
         level2InPort.close()
         level2OutPort.close()
         print("Level 2 Ports closed")
-
-def inHandlerTP(message):
-    global outPort
-
-    port = 1
-    m = mido.Message.from_bytes(message.bytes())
-    m.channel = 1
-    m.note += 12
-    outPort[port].send(m) 
 
 def inHandlerLevel1(message):
     global level1OutPort
@@ -365,3 +312,55 @@ def transposeReset(mainWin):
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()
 app.exec_()
+
+
+
+
+##########################################################################################
+################################# Deplicated Functions ###################################
+##########################################################################################
+def inHandlerTP(message):
+    global outPort
+
+    port = 1
+    m = mido.Message.from_bytes(message.bytes())
+    m.channel = 1
+    m.note += 12
+    outPort[port].send(m) 
+
+def openPorts():
+    global outPort, inPort
+
+    inputPorts = mido.get_input_names()
+    outputPorts = mido.get_output_names()
+    
+    i = 0
+    #for i in range(len(inputPorts)):
+    #    inPort.append(mido.open_input(inputPorts[1]))
+    #     if inputPorts[i][:4] == "Micr":
+    #         inPort.append(mido.open_input(inputPorts[i]))
+    # for j in range(len(inPort)):
+    #    inPort[j].callback = inHandler
+    for j in [0,1]:
+        inPort.append(mido.open_input(inputPorts[j]))
+        inPortName.append(inputPorts[j])
+    print("input ports opened", len(inPort))
+
+
+    i = 0
+    for j in [0,3,4]:
+        outPort.append(mido.open_output(outputPorts[j]))
+        outPortName.append(outputPorts[j])
+    print("Output ports opened", len(outPort))
+    
+def closePorts():
+    global outPort, inPort
+    
+    while outPort != []:
+        outPort[len(outPort)-1].close()
+        del outPort[len(outPort)-1]
+    while inPort != []:
+        inPort[len(inPort)-1].close()
+        del inPort[len(inPort)-1]
+
+    print("Port closed")
