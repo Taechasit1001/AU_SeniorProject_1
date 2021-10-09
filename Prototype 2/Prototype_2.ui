@@ -449,6 +449,9 @@ p, li { white-space: pre-wrap; }
      <property name="text">
       <string>1</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_preset_2">
      <property name="geometry">
@@ -461,6 +464,9 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string>2</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_preset_3">
@@ -475,6 +481,9 @@ p, li { white-space: pre-wrap; }
      <property name="text">
       <string>3</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_preset_4">
      <property name="geometry">
@@ -488,6 +497,9 @@ p, li { white-space: pre-wrap; }
      <property name="text">
       <string>4</string>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="Button_preset_5">
      <property name="geometry">
@@ -500,6 +512,9 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string>5</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Button_preset_Save">
@@ -526,6 +541,9 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string>6</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

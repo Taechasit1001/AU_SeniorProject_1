@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic
 import sys
 import mido
+from dataclasses import dataclass
 
 # global variables
 outPort = []
@@ -29,6 +30,8 @@ source2VolumeModifier = 1.0
 Transpose = 0
 tempoValue = 100
 
+profileArray = []
+
 from RhythmSection import *
 
 class Ui(QtWidgets.QMainWindow):
@@ -46,6 +49,9 @@ class Ui(QtWidgets.QMainWindow):
         openPortsNew()
         initRhythmSection(level1OutPort, level1InPort)
         onLevelChanged(self)
+
+        #Profile
+        initProfile()
 
 
 
@@ -80,6 +86,14 @@ class Ui(QtWidgets.QMainWindow):
         self.Button_tempo_m20.clicked.connect(lambda: tempoDe2(self))
 
         self.Button_setting.clicked.connect(self.onOpenIO)
+
+        self.Button_preset_1.clicked.connect(lambda: loadProfile(self, 0))
+        self.Button_preset_2.clicked.connect(lambda: loadProfile(self, 1))
+        self.Button_preset_3.clicked.connect(lambda: loadProfile(self, 2))
+        self.Button_preset_4.clicked.connect(lambda: loadProfile(self, 3))
+        self.Button_preset_5.clicked.connect(lambda: loadProfile(self, 4))
+        self.Button_preset_6.clicked.connect(lambda: loadProfile(self, 5))
+        
 
         
         
@@ -128,6 +142,24 @@ class ioUI(QtWidgets.QMainWindow, QtWidgets.QPushButton):
 
 ################################################################################
 ################################################################################
+
+@dataclass
+class volume:
+    source1: int
+    source2: int
+    balance: int
+    master: int
+
+    def __post_init__(self):
+        if self.source1 is None:
+            self.source1 = Volume1
+        if self.source2 is None:
+            self.source2 = Volume2
+        if self.balance is None:
+            self.balance = balanceVolume
+        if self.master is None:
+            self.master = masterVolume
+
 ################################################################################
 ################################################################################
 
@@ -348,6 +380,61 @@ def tempoDe2(mainWin):
     elif mainWin.Slider_tempo.value()/2 < 1:
         tempoValue = 1
         mainWin.Slider_tempo.setValue(1)
+
+def initProfile():
+    for i in range(6):
+        Profile = volume(None, None, None, None)
+        profileArray.append(Profile)
+
+    profileArray[0] = volume(None,None,10,20)
+    profileArray[1] = volume(None,None,44,55)
+    print(profileArray[0])
+    print(profileArray[1])
+
+def loadProfile(mainWin, index: int):
+    if index == 0:
+        mainWin.Button_preset_1.setChecked(True)
+        mainWin.Button_preset_2.setChecked(False)
+        mainWin.Button_preset_3.setChecked(False)
+        mainWin.Button_preset_4.setChecked(False)
+        mainWin.Button_preset_5.setChecked(False)
+        mainWin.Button_preset_6.setChecked(False)
+    elif index == 1:
+        mainWin.Button_preset_1.setChecked(False)
+        mainWin.Button_preset_2.setChecked(True)
+        mainWin.Button_preset_3.setChecked(False)
+        mainWin.Button_preset_4.setChecked(False)
+        mainWin.Button_preset_5.setChecked(False)
+        mainWin.Button_preset_6.setChecked(False)
+    elif index == 2:
+        mainWin.Button_preset_1.setChecked(False)
+        mainWin.Button_preset_2.setChecked(False)
+        mainWin.Button_preset_3.setChecked(True)
+        mainWin.Button_preset_4.setChecked(False)
+        mainWin.Button_preset_5.setChecked(False)
+        mainWin.Button_preset_6.setChecked(False)
+    elif index == 3:
+        mainWin.Button_preset_1.setChecked(False)
+        mainWin.Button_preset_2.setChecked(False)
+        mainWin.Button_preset_3.setChecked(False)
+        mainWin.Button_preset_4.setChecked(True)
+        mainWin.Button_preset_5.setChecked(False)
+        mainWin.Button_preset_6.setChecked(False)
+    elif index == 4:
+        mainWin.Button_preset_1.setChecked(False)
+        mainWin.Button_preset_2.setChecked(False)
+        mainWin.Button_preset_3.setChecked(False)
+        mainWin.Button_preset_4.setChecked(False)
+        mainWin.Button_preset_5.setChecked(True)
+        mainWin.Button_preset_6.setChecked(False)
+    elif index == 5:
+        mainWin.Button_preset_1.setChecked(False)
+        mainWin.Button_preset_2.setChecked(False)
+        mainWin.Button_preset_3.setChecked(False)
+        mainWin.Button_preset_4.setChecked(False)
+        mainWin.Button_preset_5.setChecked(False)
+        mainWin.Button_preset_6.setChecked(True)
+
     
 
 
