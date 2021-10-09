@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, uic
+from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
 import sys
 import mido
 from dataclasses import dataclass
@@ -95,8 +96,9 @@ class Ui(QtWidgets.QMainWindow):
         self.Button_preset_6.clicked.connect(lambda: loadProfile(self, 5))
         self.Button_preset_Save.clicked.connect(lambda: saveProfile(self, profileCurrent))
         
-
-        
+        self.Browse_intro.clicked.connect(lambda: openIntro(self))
+        self.Browse_base.clicked.connect(lambda: openBase(self))
+        self.Browse_fillin.clicked.connect(lambda: openFillin(self))
         
         #Drum generator linkage
         self.Slider_tempo.valueChanged.connect(lambda : onDialChanged(self))
@@ -466,6 +468,20 @@ def loadProfile(mainWin, index: int):
         mainWin.Button_preset_5.setChecked(False)
         mainWin.Button_preset_6.setChecked(True)
 
+def openIntro(mainWin):
+    intro = QFileDialog.getOpenFileName(None, 'Open Intro MIDI file')
+    if intro:
+        mainWin.Edit_intro.setText(intro[0])
+
+def openBase(mainWin):
+    base = QFileDialog.getOpenFileName(None, 'Open Base MIDI file')
+    if base:
+        mainWin.Edit_base.setText(base[0])
+
+def openFillin(mainWin):
+    fill = QFileDialog.getOpenFileName(None, 'Open Fill-in MIDI file')
+    if fill:
+        mainWin.Edit_fillin.setText(fill[0])
     
 
 

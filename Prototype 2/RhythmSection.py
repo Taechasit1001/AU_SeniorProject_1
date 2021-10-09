@@ -153,9 +153,9 @@ def onPlayClicked(mainWin):
 
     if not (rhythmOff or paused):
         if stopped:
-            baseName = mainWin.Edit_base.toPlainText().strip()
-            introName = mainWin.Edit_intro.toPlainText().strip()
-            fillInName = mainWin.Edit_fillin.toPlainText().strip()
+            baseName = mainWin.Edit_base.text().strip()
+            introName = mainWin.Edit_intro.text().strip()
+            fillInName = mainWin.Edit_fillin.text().strip()
             print(baseName)
             print(introName)
             print(fillInName)
