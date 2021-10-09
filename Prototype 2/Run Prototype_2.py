@@ -31,6 +31,7 @@ Transpose = 0
 tempoValue = 100
 
 profileArray = []
+profileCurrent = 0
 
 from RhythmSection import *
 
@@ -52,8 +53,7 @@ class Ui(QtWidgets.QMainWindow):
 
         #Profile
         initProfile()
-
-
+        loadProfile(self, 0)
 
 
         #Other linkage
@@ -93,6 +93,7 @@ class Ui(QtWidgets.QMainWindow):
         self.Button_preset_4.clicked.connect(lambda: loadProfile(self, 3))
         self.Button_preset_5.clicked.connect(lambda: loadProfile(self, 4))
         self.Button_preset_6.clicked.connect(lambda: loadProfile(self, 5))
+        self.Button_preset_Save.clicked.connect(lambda: saveProfile(self, profileCurrent))
         
 
         
@@ -152,13 +153,13 @@ class volume:
 
     def __post_init__(self):
         if self.source1 is None:
-            self.source1 = Volume1
+            self.source1 = [0,0,0,0,0]
         if self.source2 is None:
-            self.source2 = Volume2
+            self.source2 = [0,0,0,0,0]
         if self.balance is None:
-            self.balance = balanceVolume
+            self.balance = 50
         if self.master is None:
-            self.master = masterVolume
+            self.master = 100
 
 ################################################################################
 ################################################################################
@@ -386,12 +387,42 @@ def initProfile():
         Profile = volume(None, None, None, None)
         profileArray.append(Profile)
 
-    profileArray[0] = volume(None,None,10,20)
-    profileArray[1] = volume(None,None,44,55)
-    print(profileArray[0])
-    print(profileArray[1])
+    # profileArray[0] = volume([10,10,10,10,10],None,10,20)
+    # profileArray[1] = volume(None,None,44,55)
+    # print(profileArray[0])
+    # print(profileArray[1])
+
+def saveProfile(mainWin, index: int):
+    profileArray[index].source1[0] = mainWin.Slider_1_1.value()
+    profileArray[index].source1[1] = mainWin.Slider_1_2.value()
+    profileArray[index].source1[2] = mainWin.Slider_1_3.value()
+    profileArray[index].source1[3] = mainWin.Slider_1_4.value()
+    profileArray[index].source1[4] = mainWin.Slider_1_5.value()
+    profileArray[index].source2[0] = mainWin.Slider_2_1.value()
+    profileArray[index].source2[1] = mainWin.Slider_2_2.value()
+    profileArray[index].source2[2] = mainWin.Slider_2_3.value()
+    profileArray[index].source2[3] = mainWin.Slider_2_4.value()
+    profileArray[index].source2[4] = mainWin.Slider_2_5.value()
+    profileArray[index].balance =mainWin.Slider_balance.value()
+    profileArray[index].master = mainWin.Dial_volume.value()
 
 def loadProfile(mainWin, index: int):
+    global profileCurrent
+    profileCurrent = index
+    mainWin.Slider_1_1.setValue(profileArray[index].source1[0])
+    mainWin.Slider_1_2.setValue(profileArray[index].source1[1])
+    mainWin.Slider_1_3.setValue(profileArray[index].source1[2])
+    mainWin.Slider_1_4.setValue(profileArray[index].source1[3])
+    mainWin.Slider_1_5.setValue(profileArray[index].source1[4])
+    mainWin.Slider_2_1.setValue(profileArray[index].source2[0])
+    mainWin.Slider_2_2.setValue(profileArray[index].source2[1])
+    mainWin.Slider_2_3.setValue(profileArray[index].source2[2])
+    mainWin.Slider_2_4.setValue(profileArray[index].source2[3])
+    mainWin.Slider_2_5.setValue(profileArray[index].source2[4])
+    mainWin.Slider_balance.setValue(profileArray[index].balance)
+    mainWin.Dial_volume.setValue(profileArray[index].master)
+    onVolumeChanged(mainWin)
+
     if index == 0:
         mainWin.Button_preset_1.setChecked(True)
         mainWin.Button_preset_2.setChecked(False)
