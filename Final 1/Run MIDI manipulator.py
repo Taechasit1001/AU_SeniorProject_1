@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
+from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog, QMessageBox
 import sys
 import mido
 from dataclasses import dataclass
@@ -11,6 +11,7 @@ outPortNameFull = []
 inPort = []
 inPortName = []
 inPortNameFull = []
+currentName = []
 
 Volume1 = [0,0,0,0,0]
 level1InPort = None
@@ -125,27 +126,36 @@ class Ui(QtWidgets.QMainWindow):
 
 #################################################################################
 
-class ioUI(QtWidgets.QMainWindow, QtWidgets.QPushButton):
+class ioUI(QtWidgets.QMainWindow, QtWidgets.QPushButton, QtWidgets.QMessageBox):
+    #Current Index
+
     def __init__(self):
         super(ioUI,self).__init__()
         uic.loadUi('Final 1/settingWindow.ui', self)
 
         self.comboBox_Source1_i.addItems(inPortNameFull)
         self.comboBox_Source1_i.setCurrentIndex(level1IndexIn)
-        self.comboBox_Source1_i.currentTextChanged.connect(lambda : onIndexChanged(self))
+        self.comboBox_Source1_i.currentTextChanged.connect(lambda : setIndex(self))
 
         self.comboBox_Source1_o.addItems(outPortNameFull)
         self.comboBox_Source1_o.setCurrentIndex(level1IndexOut)
-        self.comboBox_Source1_o.currentTextChanged.connect(lambda : onIndexChanged(self))
+        self.comboBox_Source1_o.currentTextChanged.connect(lambda : setIndex(self))
 
         self.comboBox_Source2_i.addItems(inPortNameFull)
         self.comboBox_Source2_i.setCurrentIndex(level2IndexIn)
-        self.comboBox_Source2_i.currentTextChanged.connect(lambda : onIndexChanged(self))
+        self.comboBox_Source2_i.currentTextChanged.connect(lambda : setIndex(self))
 
         self.comboBox_Source2_o.addItems(outPortNameFull)
         self.comboBox_Source2_o.setCurrentIndex(level2IndexOut)
-        self.comboBox_Source2_o.currentTextChanged.connect(lambda : onIndexChanged(self))
+        self.comboBox_Source2_o.currentTextChanged.connect(lambda : setIndex(self))
 
+    def closeEvent(self, event):
+        if checkConflict():
+            reply = QMessageBox.warning(self, 'Conflict', 'The ports are conflicted, please use port only once', QMessageBox.Ok)
+            event.ignore()
+        else:
+            onIndexChanged(self)
+            event.accept()
 
 
 ################################################################################
@@ -275,7 +285,8 @@ def onIndexChanged(mainWin):
     level1IndexOut = mainWin.comboBox_Source1_o.currentIndex()
     level2IndexIn = mainWin.comboBox_Source2_i.currentIndex()
     level2IndexOut = mainWin.comboBox_Source2_o.currentIndex()
-    print("Current index is " + str(level1IndexOut))
+    print("Source 1 = " + str(inPortNameFull[level1IndexIn]) + ", " + str(outPortNameFull[level1IndexOut]))
+    print("Source 2 = " + str(inPortNameFull[level2IndexIn]) + ", " + str(outPortNameFull[level2IndexOut]))
 
     openPortsNew()
 
@@ -488,7 +499,20 @@ def openFillin(mainWin):
     if fill:
         mainWin.Edit_fillin.setText(fill[0])
     
+def setIndex(ioWin):
+    global currentName
+    currentName.clear()
+    currentName.append(str(inPortNameFull[ioWin.comboBox_Source1_i.currentIndex()])[:-2])
+    currentName.append(str(outPortNameFull[ioWin.comboBox_Source1_o.currentIndex()])[:-2])
+    currentName.append(str(inPortNameFull[ioWin.comboBox_Source2_i.currentIndex()])[:-2])
+    currentName.append(str(outPortNameFull[ioWin.comboBox_Source2_o.currentIndex()])[:-2])
 
+def checkConflict():
+    global currentName
+    if len(currentName) != len(set(currentName)):
+        return True
+    else:
+        return False
 
 
 app = QtWidgets.QApplication(sys.argv)
