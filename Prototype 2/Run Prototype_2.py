@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, uic
+from PyQt5.QtCore import QFile
 from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog
 import sys
 import mido
@@ -44,6 +45,11 @@ class Ui(QtWidgets.QMainWindow):
 
         print("Input :", mido.get_input_names())
         print("Output :", mido.get_output_names())
+
+        #Theme
+        themeFile="Prototype 2/ElegantDark.qss"
+        with open(themeFile,"r") as theme:
+            self.setStyleSheet(theme.read())
 
 
         #Configuration
