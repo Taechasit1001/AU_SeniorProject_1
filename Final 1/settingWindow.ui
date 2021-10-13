@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>425</width>
-    <height>309</height>
+    <height>330</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>425</width>
-    <height>309</height>
+    <height>330</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>425</width>
-    <height>309</height>
+    <height>330</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -162,6 +162,26 @@
     </property>
     <property name="text">
      <string>Important!!! Particular MIDI deivce can only be used once</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="dark_Checkbox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Dark mode</string>
     </property>
    </widget>
   </widget>

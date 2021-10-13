@@ -1,3 +1,5 @@
+from typing import MutableSequence
+from xml.etree.ElementTree import SubElement
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QDialog, QApplication, QFileDialog, QMessageBox
 import sys
@@ -35,6 +37,8 @@ tempoValue = 100
 profileArray = []
 profileCurrent = 0
 
+darkTheme = False
+
 from RhythmSection import *
 
 class Ui(QtWidgets.QMainWindow):
@@ -59,8 +63,11 @@ class Ui(QtWidgets.QMainWindow):
 
         #Theme
         themeFile="Final 1/ElegantDark.qss"
-        with open(themeFile,"r") as theme:
-            self.setStyleSheet(theme.read())
+        if darkTheme:
+            with open(themeFile,"r") as theme:
+                self.setStyleSheet(theme.read())
+        else:
+                self.setStyleSheet("")
 
 
         #Other linkage
@@ -121,6 +128,7 @@ class Ui(QtWidgets.QMainWindow):
          closePortsNew()
 
     def onOpenIO(self):
+        applyDarkTheme(self)
         self.ioWindow = ioUI()
         self.ioWindow.show()
 
@@ -132,6 +140,16 @@ class ioUI(QtWidgets.QMainWindow, QtWidgets.QPushButton, QtWidgets.QMessageBox):
     def __init__(self):
         super(ioUI,self).__init__()
         uic.loadUi('Final 1/settingWindow.ui', self)
+
+        themeFile="Final 1/ElegantDark.qss"
+        if darkTheme:
+            with open(themeFile,"r") as theme:
+                self.setStyleSheet(theme.read())
+                self.dark_Checkbox.setChecked(False)
+        else:
+                self.setStyleSheet("")
+
+        self.dark_Checkbox.stateChanged.connect(lambda : setDarkTheme(self))
 
         self.comboBox_Source1_i.addItems(inPortNameFull)
         self.comboBox_Source1_i.setCurrentIndex(level1IndexIn)
@@ -156,6 +174,8 @@ class ioUI(QtWidgets.QMainWindow, QtWidgets.QPushButton, QtWidgets.QMessageBox):
         else:
             onIndexChanged(self)
             event.accept()
+    
+    
 
 
 ################################################################################
@@ -513,6 +533,26 @@ def checkConflict():
         return True
     else:
         return False
+
+def setDarkTheme(mainWin):
+    global darkTheme
+    darkTheme = mainWin.dark_Checkbox.isChecked()
+
+    themeFile="Final 1/ElegantDark.qss"
+    if darkTheme:
+        with open(themeFile,"r") as theme:
+            mainWin.setStyleSheet(theme.read())
+    else:
+        mainWin.setStyleSheet("")
+
+def applyDarkTheme(mainWin):
+    themeFile="Final 1/ElegantDark.qss"
+    if darkTheme:
+        with open(themeFile,"r") as theme:
+            mainWin.setStyleSheet(theme.read())
+    else:
+        mainWin.setStyleSheet("")
+
 
 
 app = QtWidgets.QApplication(sys.argv)
