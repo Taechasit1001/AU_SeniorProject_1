@@ -118,7 +118,7 @@ class Ui(QtWidgets.QMainWindow):
         self.Button_play.clicked.connect(lambda : onPlayClicked(self))
         self.Button_stop.clicked.connect(lambda : onStopClicked(self))
         self.Button_fillin.clicked.connect(lambda : onFillInClicked(self))
-        self.Button_rhythmOff.clicked.connect(lambda : onRhythmOffToggled(self))
+        #self.Button_rhythmOff.clicked.connect(lambda : onRhythmOffToggled(self))
         self.Button_pause.clicked.connect(lambda : onPauseClicked(self))
 
         self.show()
@@ -522,10 +522,10 @@ def openFillin(mainWin):
 def setIndex(ioWin):
     global currentName
     currentName.clear()
-    currentName.append(str(inPortNameFull[ioWin.comboBox_Source1_i.currentIndex()])[:-2])
-    currentName.append(str(outPortNameFull[ioWin.comboBox_Source1_o.currentIndex()])[:-2])
-    currentName.append(str(inPortNameFull[ioWin.comboBox_Source2_i.currentIndex()])[:-2])
-    currentName.append(str(outPortNameFull[ioWin.comboBox_Source2_o.currentIndex()])[:-2])
+    currentName.append(str(inPortNameFull[ioWin.comboBox_Source1_i.currentIndex()]))
+    currentName.append(str(outPortNameFull[ioWin.comboBox_Source1_o.currentIndex()]))
+    currentName.append(str(inPortNameFull[ioWin.comboBox_Source2_i.currentIndex()]))
+    currentName.append(str(outPortNameFull[ioWin.comboBox_Source2_o.currentIndex()]))
 
 def checkConflict():
     global currentName

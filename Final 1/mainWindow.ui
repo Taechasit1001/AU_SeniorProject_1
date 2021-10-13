@@ -35,6 +35,11 @@
       <height>231</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>First Source</string>
     </property>
@@ -353,6 +358,11 @@ p, li { white-space: pre-wrap; }
       <height>151</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>Transpose</string>
     </property>
@@ -364,6 +374,11 @@ p, li { white-space: pre-wrap; }
        <width>75</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>+</string>
@@ -377,6 +392,11 @@ p, li { white-space: pre-wrap; }
        <width>75</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>-</string>
@@ -420,6 +440,11 @@ p, li { white-space: pre-wrap; }
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Reset</string>
      </property>
@@ -446,6 +471,11 @@ p, li { white-space: pre-wrap; }
        <height>81</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>1</string>
      </property>
@@ -461,6 +491,11 @@ p, li { white-space: pre-wrap; }
        <width>81</width>
        <height>81</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>2</string>
@@ -478,6 +513,11 @@ p, li { white-space: pre-wrap; }
        <height>81</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>3</string>
      </property>
@@ -493,6 +533,11 @@ p, li { white-space: pre-wrap; }
        <width>81</width>
        <height>81</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>4</string>
@@ -510,6 +555,11 @@ p, li { white-space: pre-wrap; }
        <height>81</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>5</string>
      </property>
@@ -526,6 +576,11 @@ p, li { white-space: pre-wrap; }
        <height>81</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Save</string>
      </property>
@@ -538,6 +593,11 @@ p, li { white-space: pre-wrap; }
        <width>81</width>
        <height>81</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>6</string>
@@ -555,6 +615,11 @@ p, li { white-space: pre-wrap; }
       <width>501</width>
       <height>331</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="title">
      <string>Drum generator</string>
@@ -605,6 +670,11 @@ p, li { white-space: pre-wrap; }
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>× 1.5</string>
       </property>
@@ -617,6 +687,11 @@ p, li { white-space: pre-wrap; }
         <width>61</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>× 2</string>
@@ -631,6 +706,11 @@ p, li { white-space: pre-wrap; }
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>÷ 2</string>
       </property>
@@ -643,6 +723,11 @@ p, li { white-space: pre-wrap; }
         <width>61</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>÷ 1.5</string>
@@ -700,6 +785,11 @@ p, li { white-space: pre-wrap; }
        <height>23</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Browse</string>
      </property>
@@ -730,6 +820,11 @@ p, li { white-space: pre-wrap; }
        <width>75</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Browse</string>
@@ -762,6 +857,11 @@ p, li { white-space: pre-wrap; }
        <height>23</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Browse</string>
      </property>
@@ -790,7 +890,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="Button_pause">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>140</x>
        <y>130</y>
        <width>81</width>
        <height>81</height>
@@ -811,7 +911,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="Button_stop">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>410</x>
        <y>130</y>
        <width>81</width>
        <height>81</height>
@@ -832,7 +932,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="Button_fillin">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>280</x>
        <y>130</y>
        <width>81</width>
        <height>81</height>
@@ -848,29 +948,6 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="checkable">
       <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="Button_rhythmOff">
-     <property name="geometry">
-      <rect>
-       <x>390</x>
-       <y>130</y>
-       <width>81</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Rhythm Off</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLineEdit" name="Edit_intro">
@@ -915,6 +992,11 @@ p, li { white-space: pre-wrap; }
       <width>361</width>
       <height>231</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="title">
      <string>Second Source</string>
@@ -1237,6 +1319,11 @@ p, li { white-space: pre-wrap; }
       <height>151</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>Master Volume</string>
     </property>
@@ -1265,6 +1352,11 @@ p, li { white-space: pre-wrap; }
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Mute</string>
      </property>
@@ -1277,6 +1369,11 @@ p, li { white-space: pre-wrap; }
        <width>41</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Max</string>
@@ -1291,6 +1388,11 @@ p, li { white-space: pre-wrap; }
       <width>731</width>
       <height>91</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="title">
      <string>Balance</string>
@@ -1335,6 +1437,11 @@ p, li { white-space: pre-wrap; }
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Both Source</string>
      </property>
@@ -1347,6 +1454,11 @@ p, li { white-space: pre-wrap; }
        <width>71</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Only Second</string>
@@ -1361,6 +1473,11 @@ p, li { white-space: pre-wrap; }
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Only First</string>
      </property>
@@ -1374,6 +1491,11 @@ p, li { white-space: pre-wrap; }
       <width>75</width>
       <height>81</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Setting</string>
