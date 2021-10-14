@@ -253,7 +253,7 @@ def inHandlerLevel1(message):
 
     m = mido.Message.from_bytes(message.bytes())
     for i in range(len(Volume1)):
-        m.channel = i + 1                   #Start at channel 2
+        m.channel = i + 1                                   #Start at channel 2
         m.note += Transpose
         level1OutPort.send(m)
 
@@ -263,7 +263,7 @@ def inHandlerLevel2(message):
 
     m = mido.Message.from_bytes(message.bytes())
     for i in range(len(Volume2)):
-        m.channel = i + 1                   #Start at channel 2
+        m.channel = i + 1                                   #Start at channel 2
         m.note += Transpose
         level2OutPort.send(m)
 
@@ -287,12 +287,12 @@ def onLevelChanged(mainWin):
     for i in range(len(Volume1)):
 
         msg.value = int(Volume1[i] * source1VolumeModifier)
-        msg.channel = i + 1
+        msg.channel = i + 1                                     #Start at channel 2
         level1OutPort.send(msg)
 
     for i in range(len(Volume2)):
         msg.value = int(Volume2[i] * source2VolumeModifier)
-        msg.channel = i + 1
+        msg.channel = i + 1                                     #Start at channel 2
         level2OutPort.send(msg)
 
 def onIndexChanged(mainWin):
